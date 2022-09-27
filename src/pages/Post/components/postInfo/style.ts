@@ -1,17 +1,11 @@
 import styled from "styled-components";
 
-export const PostInfoContainer = styled.section`
-  width: 100%;
-  margin-top: -6rem;
-  display: flex;
-  justify-content: center;
-`;
-
 export const PostInfoContent = styled.div`
   max-width: 864px;
   width: 100%;
   padding: 2rem 2rem;
   border-radius: 10px;
+  margin-top: -6rem;
 
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
   background: ${(props) => props.theme["base-profile"]};

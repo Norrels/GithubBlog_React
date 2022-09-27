@@ -6,11 +6,11 @@ import {
   CaretLeft,
 } from "phosphor-react";
 import { NavLink } from "react-router-dom";
-import { PostInfoButtonsAreas, PostInfoContainer, PostInfoContent, PostInfoIcons } from "./style";
+import { PostInfoButtonsAreas, PostInfoContent, PostInfoIcons } from "./style";
 
 export function PostInfo() {
   return (
-    <PostInfoContainer>
+    
       <PostInfoContent>
         <PostInfoButtonsAreas>
           <NavLink to={'/'}>
@@ -44,6 +44,5 @@ export function PostInfo() {
           <span></span>
         </PostInfoIcons>
       </PostInfoContent>
-    </PostInfoContainer>
   );
 }

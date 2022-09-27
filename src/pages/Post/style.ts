@@ -6,4 +6,37 @@ export const PostContainer = styled.main`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
+
+export const PostContent = styled.section`
+  max-width: 864px;
+  width: 100%;
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+
+  h3 {
+    color: ${(props) => props.theme['blue']}
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+`
+
+export const PostCode = styled.code`
+  background: ${(props) => props.theme['base-post']};
+  padding: 1rem;
+
+  p {
+    line-height: 160%;
+  }
+`

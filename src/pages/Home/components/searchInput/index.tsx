@@ -1,12 +1,16 @@
 import { SeachInputContainer, SeachInputContent } from "./style";
 
-export function SearchInput() {
+interface SearchInput {
+  PostAmount : number
+}
+
+export function SearchInput({PostAmount} : SearchInput ) {
   return (
     <SeachInputContainer>
       <SeachInputContent>
         <span>
           <h2>Publicações</h2>
-          <p>6 publicações</p>
+          <p>{PostAmount} publicações</p>
         </span>
 
         <input type="text" name="" id="" placeholder="Buscar conteúdo" />
