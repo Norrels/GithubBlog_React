@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { PostInfo } from "./components/postInfo";
 import { PostContainer, PostContent } from "./style";
@@ -16,6 +17,9 @@ export interface IssueProps {
 }
 
 export function Post() {
+
+  const { issueNumber } = useParams()
+
   const [issue, setIssue] = useState<IssueProps>({
     body: "",
     title: "",
@@ -29,7 +33,7 @@ export function Post() {
 
   async function fetchIssue() {
     const response = await api.get(
-      "/repos/Norrels/GithubBlog_React/issues/1"
+      `/repos/Norrels/GithubBlog_React/issues/${issueNumber}`
     );
     setIssue(response.data)
   }

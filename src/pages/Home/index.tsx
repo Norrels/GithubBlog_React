@@ -12,7 +12,7 @@ import {
 } from "./style";
 
 export interface IssuesProps {
-  id: number;
+  number: number;
   title: string;
   body: string;
   updated_at: Date;
@@ -20,26 +20,34 @@ export interface IssuesProps {
 
 export function Home() {
   const [issues, setIssues] = useState<IssuesProps[]>([]);
+  const [newSearch, setNewSearch] = useState("")
+
+  function HandleSearchInput(data: string) {
+    setNewSearch(data)
+  }
 
   async function fetchIssues() {
-    const response = await api.get(
-      "search/issues?q=repo:Norrels/GithubBlog_React"
+    const response = await api.get("search/issues?", {
+      params: {
+        q: `${newSearch}repo:Norrels/GithubBlog_React/`
+      }
+    }
     );
     setIssues(response.data.items);
   }
 
   useEffect(() => {
     fetchIssues();
-  }, []);
+  }, [newSearch]);
 
   return (
     <HomeContainer>
       <ProfileCard />
-      <SearchInput PostAmount={issues.length}  />
+      <SearchInput handleSearchInput={HandleSearchInput} PostAmount={issues.length}  />
       <HomePostsContainer>
         <HomePostsContent>
           {issues.map((issue) => {
-            return <PostCard key={issue.id} issue={issue} />;
+            return <PostCard key={issue.number} issue={issue} />;
           })}
         </HomePostsContent>
       </HomePostsContainer>

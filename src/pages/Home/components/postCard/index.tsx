@@ -12,7 +12,7 @@ export function PostCard({ issue }: PostCardProps) {
   const navigate = useNavigate();
 
   function handleClickOnPostCard() {
-    navigate("/post");
+    navigate(`/post/${issue.number}`);
   }
 
   return (

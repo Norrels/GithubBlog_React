@@ -29,7 +29,7 @@ export const PostCardContainer = styled.article`
 
 export const PostCardTitleContent = styled.div`
   display: grid;
-  grid-template-columns: 80% auto;
+  grid-template-columns: 80% 20%;
   justify-content: space-between;
   width: 100%;
 
@@ -43,6 +43,7 @@ export const PostCardTitleContent = styled.div`
     text-transform: capitalize;
     width: auto;
     font-size: 0.875rem;
+    text-align: center;
     color: ${(props) => props.theme["base-span"]};
   }
 `;
