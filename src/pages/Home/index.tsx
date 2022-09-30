@@ -23,9 +23,8 @@ export function Home() {
 
   async function fetchIssues() {
     const response = await api.get(
-      "https://api.github.com/search/issues?q=repo:Norrels/GithubBlog_React"
+      "search/issues?q=repo:Norrels/GithubBlog_React"
     );
-    console.log(response.data.items);
     setIssues(response.data.items);
   }
 

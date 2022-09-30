@@ -40,6 +40,7 @@ export const PostCardTitleContent = styled.div`
   }
 
   p {
+    text-transform: capitalize;
     width: auto;
     font-size: 0.875rem;
     color: ${(props) => props.theme["base-span"]};

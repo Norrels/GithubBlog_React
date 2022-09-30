@@ -1,29 +1,32 @@
 import { useNavigate } from "react-router-dom";
 import { IssuesProps } from "../..";
 import { PostCardContainer, PostCardTitleContent } from "./style";
-
+import ptBR from "date-fns/locale/pt-BR";
+import { formatDistanceToNow } from "date-fns";
 
 interface PostCardProps {
-  issue: IssuesProps
+  issue: IssuesProps;
 }
 
-export function PostCard({issue} : PostCardProps) {
-
-  const navigate = useNavigate()
+export function PostCard({ issue }: PostCardProps) {
+  const navigate = useNavigate();
 
   function handleClickOnPostCard() {
-    navigate('/post')
+    navigate("/post");
   }
 
   return (
     <PostCardContainer onClick={handleClickOnPostCard}>
       <PostCardTitleContent>
         <h3>{issue.title}</h3>
-        <p>Há 1 dia</p>
+        <p>
+          {formatDistanceToNow(new Date(issue.updated_at), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </p>
       </PostCardTitleContent>
-      <p>
-        {issue.body}
-      </p>
+      <p>{issue.body}</p>
     </PostCardContainer>
   );
 }

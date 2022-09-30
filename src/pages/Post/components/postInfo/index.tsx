@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import {
   GithubLogo,
   ChatCircle,
@@ -6,43 +8,52 @@ import {
   CaretLeft,
 } from "phosphor-react";
 import { NavLink } from "react-router-dom";
+import { IssueProps } from "../..";
 import { PostInfoButtonsAreas, PostInfoContent, PostInfoIcons } from "./style";
 
-export function PostInfo() {
+interface PostInfoProps {
+  Issue: IssueProps;
+}
+
+export function PostInfo({ Issue }: PostInfoProps) {
   return (
-    
-      <PostInfoContent>
-        <PostInfoButtonsAreas>
-          <NavLink to={'/'}>
-            <CaretLeft />
-            <p>VOLTAR</p>
-          </NavLink>
-          <a>
-            <p>VER NO GITHUB</p>
-            <ArrowSquareOut />
-          </a>
-        </PostInfoButtonsAreas>
+    <PostInfoContent>
+      <PostInfoButtonsAreas>
+        <NavLink to={"/"}>
+          <CaretLeft />
+          <p>VOLTAR</p>
+        </NavLink>
+        <a href={Issue.html_url} target='blank'>
+          VER NO GITHUB
+          <ArrowSquareOut />
+        </a>
+      </PostInfoButtonsAreas>
 
-        <h1>JavaScript data types and data structures</h1>
+      <h1>{Issue.title}</h1>
 
-        <PostInfoIcons>
-          <span>
-            <GithubLogo />
-            <p>Norrels</p>
-          </span>
+      <PostInfoIcons>
+        <span>
+          <GithubLogo />
+          <p>{Issue.user.login}</p>
+        </span>
 
-          <span>
-            <Calendar />
-            <p>Há 1 dia</p>
-          </span>
+        <span>
+          <Calendar />
+          <p>
+            {formatDistanceToNow(new Date(Issue.updated_at), {
+              addSuffix: true,
+              locale: ptBR,
+            })}
+          </p>
+        </span>
 
-          <span>
-            <ChatCircle />
-            <p>5 comentários</p>
-          </span>
+        <span>
+          <ChatCircle />
+          <p>{Issue.comments} comentários</p>
+        </span>
 
-          <span></span>
-        </PostInfoIcons>
-      </PostInfoContent>
+        <span></span>
+      </PostInfoIcons>
+    </PostInfoContent>
   );
 }

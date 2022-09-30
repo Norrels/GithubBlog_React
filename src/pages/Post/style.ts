@@ -18,7 +18,7 @@ export const PostContent = styled.section`
   flex-direction: column;
 
   h3 {
-    color: ${(props) => props.theme['blue']}
+    color: ${(props) => props.theme["blue"]};
   }
 
   p {
@@ -30,13 +30,16 @@ export const PostContent = styled.section`
     flex-direction: column;
     gap: 1.6rem;
   }
-`
 
-export const PostCode = styled.code`
-  background: ${(props) => props.theme['base-post']};
-  padding: 1rem;
+  pre {
+    width: 100%;
+    background: ${(props) => props.theme["base-post"]};
+    padding: 2rem;
 
-  p {
-    line-height: 160%;
+    p {
+      line-height: 160%;
+    }
   }
-`
+`;
+
+
