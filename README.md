@@ -3,6 +3,7 @@
 A ideia principal era desenvolver um blog que exibisse issues do github como forma de conteúdo no blog, e outras informações do perfil do usuário
 
 ### Conceitos desenvolvidos
+- ReactJS
 - Styled-Components
 - React-Router-Dom
 - Axios
